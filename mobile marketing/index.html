@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic & Professional Portfolio</title>
+    <style>
+        /* Ерөнхий тохиргоо */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #2d3748;
+            background-color: #f4f6fa;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Дээд хэсгийн Баннер (Hero Banner) */
+        .hero-banner {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 16px;
+            border-bottom: 5px solid #f6ad55;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .institution {
+            font-size: 14pt;
+            color: #e2e8f0;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 32pt;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 13pt;
+            color: #fbd38d;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Үндсэн бүтцийн хуваарилалт (Layout) */
+        .main-layout {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Зүүн талын багана (Sidebar) */
+        .sidebar-col {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Баруун талын багана (Main Content) */
+        .content-col {
+            flex: 2;
+            min-width: 450px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        /* Карт загварууд */
+        .sidebar-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* ӨӨРЧЛӨЛТ ОРСОН ХЭСЭГ: Зургийн загвар */
+        .profile-img-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #2a5298;
+            margin: 0 auto 20px auto;
+            overflow: hidden; /* Зургийг дугуй хүрээнээс илүү гаргахгүй */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Зургийн харьцааг алдагдуулахгүйгээр голлуулж зүснэ */
+        }
+
+        .sidebar-title {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4a5568;
+            display: block;
+            font-size: 10pt;
+        }
+
+        .info-value {
+            color: #718096;
+            font-size: 11pt;
+        }
+
+        /* Сошиал сувгуудын товчлуур */
+        .btn {
+            display: block;
+            padding: 12px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 11pt;
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+        }
+
+        .btn-twitter {
+            background-color: #1DA1F2;
+        }
+        
+        .btn-linkedin {
+            background-color: #0077B5;
+        }
+
+        /* Баруун талын агуулгын хэсгүүд */
+        h2 {
+            font-size: 16pt;
+            color: #1e3c72;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-left: 4px solid #f6ad55;
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .section-block {
+            margin-bottom: 35px;
+        }
+
+        /* Боловсрол, Төслийн цаг хугацааны дараалал (Timeline) */
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-header {
+            font-weight: bold;
+            font-size: 13pt;
+            color: #2d3748;
+        }
+
+        .timeline-sub {
+            font-size: 11pt;
+            color: #2a5298;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            font-size: 10pt;
+            color: #a0aec0;
+            margin-bottom: 8px;
+        }
+
+        /* Ур чадварын хэсэг (Skills Badges) */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-group {
+            background-color: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 3px solid #2a5298;
+        }
+
+        .skill-badge {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="hero-banner">
+            <div class="institution">Inha Technical College</div>
+            <h1>아마르자갈</h1>
+            <p class="tagline">Engineering & Technology Student | Aspiring Professional</p>
+        </div>
+
+        <div class="main-layout">
+            
+            <div class="sidebar-col">
+                
+                <div class="sidebar-card">
+                    <div class="profile-img-container">
+                        <img src="/img/1776664913386 (1).png" alt="Student Profile Photo" class="profile-img" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+                    </div>
+                    <div style="font-weight: bold; color: #2d3748; font-size: 14pt;">Student Profile</div>
+                    <div style="font-size: 10pt; color: #718096;">Incheon, South Korea</div>
+                </div>
+
+                <div class="sidebar-card">
+                    <div class="sidebar-title">Contact Info</div>
+                    <ul class="info-list">
+                        <li>
+                            <span class="info-label">Email Address</span>
+                            <span class="info-value">your.email@inha.ac.kr</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Phone Number</span>
+                            <span class="info-value">+82 10-XXXX-XXXX</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Department</span>
+                            <span class="info-value">Computer Science & Engineering</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <div class="sidebar-title">Connect With Me</div>
+                    <a href="https://instagram.com/your_username" target="_blank" class="btn btn-instagram">Instagram</a>
+                    <a href="https://twitter.com/your_username" target="_blank" class="btn btn-twitter">Twitter (X)</a>
+                    <a href="https://linkedin.com/in/your_username" target="_blank" class="btn btn-linkedin">LinkedIn</a>
+                </div>
+                
+            </div>
+
+            <div class="content-col">
+                
+                <div class="section-block">
+                    <h2>Professional Summary</h2>
+                    <p>
+                        A highly motivated and dedicated student at Inha Technical College, specializing in cutting-edge technological advancements and practical engineering solutions. Possessing a strong foundation in collaborative project execution, technical problem-solving, and continuous learning. Eager to leverage academic insights and hands-on laboratory experiences to contribute effectively to real-world industrial and software engineering challenges.
+                    </p>
+                </div>
+
+                <div class="section-block">
+                    <h2>Education</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-header">Inha Technical College</div>
+                        <div class="timeline-sub">Associate Degree in Computer Science & Engineering</div>
+                        <div class="timeline-date">March 2024 - Present</div>
+                        <p style="font-size: 10pt;">Relevant Coursework: Data Structures, Algorithms, Web Development, Database Management Systems, Network Architecture.</p>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h2>Academic Projects</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-header">Smart Campus Mobile Application</div>
+                        <div class="timeline-sub">Lead Developer / Team Project</div>
+                        <div class="timeline-date">Fall 2025</div>
+                        <p style="font-size: 10pt;">Designed and implemented a cross-platform mobile app aimed at improving student access to campus facilities and scheduling. Integrated real-time databases and modern UI elements.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">Automated Database Optimization Portfolio</div>
+                        <div class="timeline-sub">Individual Capstone Project</div>
+                        <div class="timeline-date">Spring 2025</div>
+                        <p style="font-size: 10pt;">Optimized backend query processing speeds by 40% for a mockup e-commerce platform using relational database schema restructuring and advanced index styling.</p>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h2>Skills & Competencies</h2>
+                    <div class="skills-container">
+                        <div class="skill-group">
+                            <span class="skill-badge">Programming</span>
+                            <div style="font-size: 10pt; color:#4a5568;">Python, Java, JavaScript, C++</div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-badge">Web Tech</span>
+                            <div style="font-size: 10pt; color:#4a5568;">HTML5, CSS3, React, Node.js</div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-badge">Tools</span>
+                            <div style="font-size: 10pt; color:#4a5568;">MySQL, Git, GitHub, VS Code</div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-badge">Languages</span>
+                            <div style="font-size: 10pt; color:#4a5568;">Mongolian (Native), English, Korean</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
